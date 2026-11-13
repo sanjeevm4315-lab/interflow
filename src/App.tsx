@@ -165,6 +165,7 @@ const deadlinePresets = [{days:1,label:'Tomorrow'},{days:3,label:'In 3 days'},{d
 
 export default function App() {
   const [apps,setApps] = useState<Application[]>(loadApps);
+  const [introVisible,setIntroVisible] = useState(()=>!window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   const [filter,setFilter] = useState('All applications');
   const [search,setSearch] = useState('');
   const [sortOrder,setSortOrder] = useState<'asc'|'desc'>('asc');
@@ -179,6 +180,11 @@ export default function App() {
   const [mobileNav,setMobileNav] = useState(false);
 
   useEffect(()=>{ try { localStorage.setItem(STORAGE_KEY,JSON.stringify(apps)); } catch { setToast('Storage unavailable in this browser.'); } },[apps]);
+  useEffect(()=>{
+    if(!introVisible) return;
+    const timer=window.setTimeout(()=>setIntroVisible(false),1450);
+    return ()=>window.clearTimeout(timer);
+  },[introVisible]);
   useEffect(()=>{ if(!toast) return; const t=window.setTimeout(()=>setToast(''),2600); return ()=>window.clearTimeout(t); },[toast]);
 
   const counts = useMemo(()=>({
@@ -374,6 +380,7 @@ export default function App() {
       </div>
     </main>
 
+    {introVisible&&<div className="intro-splash" aria-hidden="true"><div className="intro-lockup"><div className="intro-mark"><GraduationCap size={30}/></div><div className="intro-wordmark">intern<span>flow</span><div className="intro-progress"><i/></div></div></div></div>}
     {modal&&<div className="modal-backdrop" onMouseDown={e=>{if(e.target===e.currentTarget)setModal(false)}}><form className="modal" onSubmit={save}>
       <div className="modal-head"><div><div className="eyebrow">OPPORTUNITY DETAILS</div><h2>{editing?'Edit application':'Add new application'}</h2><p>Keep the important details in one place.</p></div><button type="button" className="icon-btn" onClick={()=>setModal(false)}><X size={19}/></button></div>
       <div className="form-grid">

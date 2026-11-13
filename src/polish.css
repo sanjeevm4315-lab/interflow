@@ -8,6 +8,95 @@
   animation: app-open .5s var(--motion-enter) both;
 }
 
+.intro-splash {
+  position: fixed;
+  z-index: 200;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background-color: #0b1020;
+  background-image:
+    linear-gradient(rgba(177, 195, 234, .035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(177, 195, 234, .035) 1px, transparent 1px),
+    linear-gradient(135deg, #0b1020 0%, #121d33 52%, #0b1020 100%);
+  background-size: 46px 46px, 46px 46px, 100% 100%;
+  animation: intro-dismiss .38s var(--motion-enter) .98s both;
+}
+
+.intro-lockup {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: intro-lockup-in .58s var(--motion-enter) both;
+}
+
+.intro-mark {
+  display: grid;
+  width: 54px;
+  height: 54px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, .18);
+  border-radius: 15px;
+  background: linear-gradient(145deg, #718eff, #9b77fa);
+  color: #fff;
+  box-shadow: 0 10px 35px rgba(109, 140, 255, .26);
+  animation: intro-mark-in .65s var(--motion-enter) both;
+}
+
+.intro-wordmark {
+  color: #f4f6ff;
+  font: 800 29px/1 Manrope, sans-serif;
+  letter-spacing: -.5px;
+  animation: intro-wordmark-in .5s var(--motion-enter) 70ms both;
+}
+
+.intro-wordmark > span {
+  color: #8da4ff;
+}
+
+.intro-progress {
+  height: 2px;
+  margin-top: 11px;
+  overflow: hidden;
+  border-radius: 2px;
+  background: rgba(215, 225, 247, .16);
+}
+
+.intro-progress i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #718eff, #65d7a7);
+  transform: scaleX(0);
+  transform-origin: left center;
+  animation: intro-progress .72s var(--motion-enter) 80ms both;
+}
+
+@keyframes intro-lockup-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes intro-mark-in {
+  from { opacity: 0; transform: scale(.78) rotate(-8deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+@keyframes intro-wordmark-in {
+  from { opacity: 0; transform: translateX(8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes intro-progress {
+  to { transform: scaleX(1); }
+}
+
+@keyframes intro-dismiss {
+  to { opacity: 0; visibility: hidden; }
+}
+
 @media (min-width: 701px) {
   .sidebar {
   animation: sidebar-open .58s var(--motion-enter) both;
@@ -295,6 +384,19 @@ textarea:focus-visible {
 }
 
 @media (max-width: 520px) {
+  .intro-lockup {
+    gap: 12px;
+  }
+
+  .intro-mark {
+    width: 46px;
+    height: 46px;
+  }
+
+  .intro-wordmark {
+    font-size: 24px;
+  }
+
   .welcome-actions {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
