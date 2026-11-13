@@ -316,7 +316,7 @@ export default function App() {
       <header className="topbar">
         <button className="icon-btn mobile-menu" onClick={()=>setMobileNav(!mobileNav)} aria-label="Toggle menu"><Menu size={20}/></button>
         <div className="breadcrumb">Workspace <span>/</span> <strong>{filter==='All applications'?'Overview':filter}</strong></div>
-        <div className="top-actions"><span className="today-label"><CalendarDays size={15}/>{new Date().toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'})}</span><button className="icon-btn notification" title="Deadline alerts"><Bell size={18}/>{counts.action>0&&<i/>}</button><button className="add-btn" onClick={openAdd}><Plus size={17}/> Add application</button></div>
+        <div className="top-actions"><span className="today-label"><CalendarDays size={15}/>{new Date().toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'})}</span><button className="icon-btn notification" onClick={()=>counts.action?setFilter('Needs action'):setToast('No applications need action right now')} aria-label="Show deadlines needing action" title="Show deadlines needing action"><Bell size={18}/>{counts.action>0&&<i/>}</button><button className="add-btn" onClick={openAdd}><Plus size={17}/> Add application</button></div>
       </header>
 
       <div className="content">

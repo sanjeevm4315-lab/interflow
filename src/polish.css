@@ -10,6 +10,17 @@
 .content > :nth-child(3) { animation-delay: 90ms; }
 .content > :nth-child(4) { animation-delay: 135ms; }
 
+.sidebar {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-color: #3a4760 transparent;
+  scrollbar-width: thin;
+}
+
+.sidebar-bottom {
+  flex: none;
+}
+
 @keyframes rise-in {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -196,13 +207,6 @@ textarea:focus-visible {
     place-items: center;
     min-width: 34px;
     min-height: 32px;
-  }
-}
-
-@media (max-width: 800px) {
-  .sidebar {
-    overflow-y: auto;
-    overscroll-behavior: contain;
   }
 }
 
