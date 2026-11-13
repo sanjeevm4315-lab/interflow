@@ -1,9 +1,33 @@
 :root {
   --motion-ease: cubic-bezier(.2, .75, .25, 1);
+  --motion-enter: cubic-bezier(.18, .86, .28, 1);
+  --motion-press: cubic-bezier(.2, .8, .2, 1);
+}
+
+.app-shell {
+  animation: app-open .5s var(--motion-enter) both;
+}
+
+@media (min-width: 701px) {
+  .sidebar {
+  animation: sidebar-open .58s var(--motion-enter) both;
+  }
+}
+
+.brand-mark {
+  animation: mark-open .68s var(--motion-enter) 70ms both;
+}
+
+.brand > span {
+  animation: wordmark-open .5s var(--motion-enter) 110ms both;
+}
+
+.topbar {
+  animation: topbar-open .52s var(--motion-enter) 80ms both;
 }
 
 .content > * {
-  animation: rise-in .48s var(--motion-ease) both;
+  animation: rise-in .48s var(--motion-enter) both;
 }
 
 .content > :nth-child(2) { animation-delay: 45ms; }
@@ -26,6 +50,31 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes app-open {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sidebar-open {
+  from { opacity: .7; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes mark-open {
+  from { opacity: 0; transform: translateY(5px) scale(.86) rotate(-7deg); }
+  to { opacity: 1; transform: translateY(0) scale(1) rotate(0); }
+}
+
+@keyframes wordmark-open {
+  from { opacity: 0; transform: translateX(-5px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes topbar-open {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .stat-card,
 .upcoming-item,
 .pipeline-stage,
@@ -34,11 +83,26 @@
 .add-btn,
 .icon-btn,
 .nav-item {
-  transition: background-color .18s ease, border-color .18s ease, box-shadow .18s ease, color .18s ease, transform .18s var(--motion-ease);
+  transform-origin: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color .2s ease, border-color .2s ease, box-shadow .22s ease, color .18s ease, transform .22s var(--motion-press), filter .2s ease;
+}
+
+button:active:not(:disabled) {
+  transform: scale(.975);
+  transition-duration: 80ms;
+}
+
+button:active:not(:disabled) svg {
+  transform: scale(.9);
+}
+
+button svg {
+  transition: transform .2s var(--motion-press);
 }
 
 .stat-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-3px) scale(1.008);
   border-color: rgba(139, 165, 255, .3);
   box-shadow: 0 14px 34px rgba(0, 0, 0, .2);
 }
@@ -49,6 +113,50 @@
 
 .pipeline-stage:hover .progress-track {
   background: #33425f;
+}
+
+.pipeline-stage:hover .progress-fill {
+  filter: brightness(1.18);
+}
+
+.progress-fill {
+  transition: width .48s var(--motion-enter), filter .2s ease;
+}
+
+.nav-item:hover:not(.active) {
+  transform: translateX(2px);
+}
+
+.primary-btn:hover,
+.add-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(109, 140, 255, .23);
+}
+
+.secondary-btn:hover,
+.filter-btn:hover,
+.sort-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(157, 180, 255, .38);
+}
+
+.icon-btn:hover svg,
+.text-btn:hover svg {
+  transform: translateX(1px) scale(1.06);
+}
+
+tbody tr {
+  animation: row-arrive .32s var(--motion-enter) both;
+}
+
+tbody tr:nth-child(2) { animation-delay: 24ms; }
+tbody tr:nth-child(3) { animation-delay: 48ms; }
+tbody tr:nth-child(4) { animation-delay: 72ms; }
+tbody tr:nth-child(5) { animation-delay: 96ms; }
+
+@keyframes row-arrive {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 button:focus-visible,
@@ -82,7 +190,12 @@ textarea:focus-visible {
   color: #aab8d2;
   padding: 6px 9px;
   font-size: 9px;
-  transition: .18s ease;
+  transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .2s var(--motion-press), box-shadow .2s ease;
+}
+
+.deadline-presets button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(83, 110, 196, .16);
 }
 
 .deadline-presets button:hover,
@@ -143,11 +256,13 @@ textarea:focus-visible {
 }
 
 .modal-backdrop {
-  animation: backdrop-in .18s ease both;
+  animation: backdrop-in .22s ease-out both;
+  backdrop-filter: blur(7px);
 }
 
 .modal {
-  animation: modal-in .26s var(--motion-ease) both;
+  animation: modal-in .38s var(--motion-enter) both;
+  transform-origin: center;
 }
 
 @keyframes backdrop-in {
@@ -156,7 +271,17 @@ textarea:focus-visible {
 }
 
 @keyframes modal-in {
-  from { opacity: 0; transform: translateY(8px) scale(.99); }
+  from { opacity: 0; transform: translateY(12px) scale(.975); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.row-menu {
+  animation: menu-open .16s var(--motion-enter) both;
+  transform-origin: top right;
+}
+
+@keyframes menu-open {
+  from { opacity: 0; transform: translateY(-4px) scale(.97); }
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
@@ -371,7 +496,7 @@ textarea:focus-visible {
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, #6d8cff, #65d7a7);
-  transition: width .25s var(--motion-ease);
+  transition: width .42s var(--motion-enter);
 }
 
 .task-compose {
@@ -422,6 +547,11 @@ textarea:focus-visible {
   height: 14px;
   margin: 0;
   accent-color: #7f9bff;
+  transition: transform .18s var(--motion-press);
+}
+
+.checklist-item:hover input {
+  transform: scale(1.1);
 }
 
 .checklist-item.done span {
@@ -469,6 +599,10 @@ textarea:focus-visible {
   display: block;
 }
 
+.activity-item {
+  animation: row-arrive .28s var(--motion-enter) both;
+}
+
 .activity-item strong {
   color: #c9d3e6;
   font-size: 10px;
@@ -487,6 +621,14 @@ textarea:focus-visible {
 }
 
 @media (max-width: 700px) {
+  .sidebar {
+    animation: none;
+  }
+
+  .sidebar.mobile-open {
+    animation: mobile-sidebar-open .28s var(--motion-enter) both;
+  }
+
   .details-grid {
     grid-template-columns: 1fr;
     gap: 18px;
@@ -497,6 +639,11 @@ textarea:focus-visible {
     border-top: 1px solid var(--line);
     border-left: 0;
   }
+}
+
+@keyframes mobile-sidebar-open {
+  from { opacity: .85; transform: translateX(-14px); }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
