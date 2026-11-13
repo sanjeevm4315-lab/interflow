@@ -748,6 +748,150 @@ textarea:focus-visible {
   to { opacity: 1; transform: translateX(0); }
 }
 
+.workspace-label { font-size: 11px; }
+.nav-item { font-size: 14px; }
+.brand { font-size: 24px; }
+.profile strong { font-size: 12px; }
+.profile small { font-size: 11px; }
+.breadcrumb { font-size: 13px; }
+.today-label { font-size: 12px; }
+.add-btn,
+.primary-btn { font-size: 13px; }
+.secondary-btn { font-size: 12px; }
+.eyebrow { font-size: 10px; }
+.welcome-row h1 { font-size: 32px; }
+.subtitle { font-size: 14px; line-height: 1.55; }
+.alert-banner strong { font-size: 13px; }
+.alert-banner p { font-size: 12px; line-height: 1.5; }
+.alert-banner button { font-size: 11px; }
+.stat-copy span { font-size: 12px; }
+.stat-copy strong { font-size: 28px; }
+.stat-copy small { font-size: 11px; }
+.section-heading h2 { font-size: 16px; }
+.section-heading p { font-size: 12px; }
+.mini-total { font-size: 11px; }
+.stage-top { font-size: 12px; }
+.stage-top strong { font-size: 14px; }
+.toolbar input { font-size: 12px; }
+.filter-btn { font-size: 11px; }
+th { font-size: 11px; }
+td { font-size: 12px; }
+.company-logo { font-size: 11px; }
+.company-info strong { font-size: 12px; }
+.company-info > span { font-size: 11px; }
+.company-info .next-action-link { font-size: 11px; }
+.company-info .next-action-link span { font-size: 11px; }
+.status-select { font-size: 11px; }
+.status-select option { font-size: 13px; }
+.deadline-cell { font-size: 11px; }
+.warning-pill { font-size: 11px; }
+.row-menu button { font-size: 11px; }
+.table-footer { font-size: 11px; }
+.upcoming-info strong { font-size: 12px; }
+.upcoming-info span { font-size: 11px; }
+.upcoming-info small { font-size: 11px; }
+.date-tile span { font-size: 11px; }
+.local-save { font-size: 11px; }
+.deadline-presets > span { font-size: 11px; }
+.focus-card strong { font-size: 12px; }
+.focus-card p { font-size: 11px; }
+.footer { font-size: 11px; }
+.form-grid label { font-size: 12px; }
+.form-grid input,
+.form-grid select,
+.form-grid textarea { font-size: 13px; }
+.form-hint { font-size: 11px; }
+.modal-head h2 { font-size: 22px; }
+.modal-head p { font-size: 12px; }
+.modal-actions button { font-size: 12px; }
+.detail-summary { font-size: 12px; }
+.detail-section-heading h3 { font-size: 15px; }
+.detail-section-heading p { font-size: 11px; }
+.checklist-item { font-size: 12px; }
+.activity-item strong { font-size: 12px; }
+.activity-item time { font-size: 10px; }
+.task-compose input { font-size: 12px; }
+.toast { font-size: 13px; }
+
+.stats-grid .stat-card {
+  animation: stat-card-arrive .58s var(--motion-enter) both;
+}
+
+.stats-grid .stat-card:nth-child(2) { animation-delay: 80ms; }
+.stats-grid .stat-card:nth-child(3) { animation-delay: 140ms; }
+.stats-grid .stat-card:nth-child(4) { animation-delay: 200ms; }
+
+@keyframes stat-card-arrive {
+  from { opacity: 0; transform: translateY(12px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.stat-card .stat-icon {
+  animation: icon-arrive .5s var(--motion-enter) 120ms both;
+}
+
+@keyframes icon-arrive {
+  from { opacity: 0; transform: scale(.72) rotate(-8deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.stat-spark span {
+  transform: scaleY(0);
+  transform-origin: bottom;
+  animation: spark-arrive .42s var(--motion-enter) .25s both;
+}
+
+.stat-spark span:nth-child(2) { animation-delay: 290ms; }
+.stat-spark span:nth-child(3) { animation-delay: 330ms; }
+.stat-spark span:nth-child(4) { animation-delay: 370ms; }
+.stat-spark span:nth-child(5) { animation-delay: 410ms; }
+.stat-spark span:nth-child(6) { animation-delay: 450ms; }
+.stat-spark span:nth-child(7) { animation-delay: 490ms; }
+
+@keyframes spark-arrive {
+  to { transform: scaleY(1); }
+}
+
+.pipeline-stage {
+  animation: row-arrive .4s var(--motion-enter) both;
+}
+
+.pipeline-stage:nth-child(2) { animation-delay: 35ms; }
+.pipeline-stage:nth-child(3) { animation-delay: 70ms; }
+.pipeline-stage:nth-child(4) { animation-delay: 105ms; }
+.pipeline-stage:nth-child(5) { animation-delay: 140ms; }
+
+.upcoming-item {
+  animation: row-arrive .36s var(--motion-enter) both;
+}
+
+.upcoming-item:nth-child(2) { animation-delay: 45ms; }
+.upcoming-item:nth-child(3) { animation-delay: 90ms; }
+.upcoming-item:nth-child(4) { animation-delay: 135ms; }
+
+@media (max-width: 520px) {
+  .brand { font-size: 22px; }
+  .nav-item { font-size: 13px; }
+  .welcome-row h1 { font-size: 26px; }
+  .subtitle { font-size: 13px; }
+  .add-btn,
+  .primary-btn,
+  .secondary-btn { font-size: 12px; }
+  .stat-card { min-height: 108px; }
+  .stat-copy span { font-size: 11px; }
+  .stat-copy strong { font-size: 24px; }
+  .stat-copy small { font-size: 11px; }
+  th { font-size: 11px; }
+  td { font-size: 11px; }
+  .company-logo { font-size: 11px; }
+  .company-info strong { font-size: 11px; }
+  .company-info > span { font-size: 11px; }
+  .company-info .next-action-link span { font-size: 11px; }
+  .deadline-cell { font-size: 11px; }
+  .upcoming-info strong { font-size: 11px; }
+  .upcoming-info span { font-size: 11px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
