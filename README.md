@@ -42,9 +42,16 @@ A `netlify.toml` file is included with these settings.
 - Warning badges for deadlines due within 3 days or overdue.
 - Needs action filter.
 - Pipeline summary that updates when a status changes.
-- Search, deadline sorting and CSV export.
+- Editable next-action memos, searchable alongside company and role.
+- One-click 1-day, 3-day and 7-day deadline presets.
+- Reversible deadline sort direction and CSV export.
+- Stage-aware preparation checklists with custom tasks and progress.
+- Per-application activity timeline for status and task updates.
+- Offline calendar export in `.ics` format.
+- Confirmed reset to fictional demo data for repeatable judging.
 - Responsive dashboard.
 - Local browser persistence using localStorage.
+- Fictional sample records; no Supabase, login, API or environment variable is required.
 
 ## Important challenge note
 
@@ -54,12 +61,15 @@ The published challenge brief currently says not to use database setup, login pr
 
 1. Click **Add application**.
 2. Enter a fictional company and role.
-3. Set the deadline to tomorrow (or within 3 days).
+3. Keep the 3-day preset or choose tomorrow.
 4. Save and point out the **Needs action** warning.
 5. Click **Needs action** in the sidebar or the filter button.
 6. Change the new record's status using its status dropdown.
 7. Show the pipeline count changing immediately.
-8. Edit the record, then demonstrate delete if requested.
+8. Add or edit the next-action memo from the application row.
+9. Open **Checklist & history**, complete a task and add a custom step.
+10. Export the active deadlines to a calendar file if requested.
+11. Use **Reset sample data** to restore the starting demo state.
 
 ## Data
 
